@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathfinding Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">Pathfinding Visualizer</div>
+        <div class="nav-controls">
+            <div class="dropdown">
+                <button class="nav-btn dropdown-toggle" id="algo-dropdown">
+                    Algorithms <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-menu" id="algo-menu">
+                    <a data-algo="dijkstra" class="dropdown-item active">Dijkstra's Algorithm</a>
+                    <a data-algo="astar" class="dropdown-item">A* Search</a>
+                    <a data-algo="greedy" class="dropdown-item">Greedy Best-first Search</a>
+                    <a data-algo="bfs" class="dropdown-item">Breadth-first Search</a>
+                    <a data-algo="dfs" class="dropdown-item">Depth-first Search</a>
+                    <a data-algo="bidirectional" class="dropdown-item">Bidirectional BFS</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button class="nav-btn dropdown-toggle" id="maze-dropdown">
+                    Mazes &amp; Patterns <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-menu" id="maze-menu">
+                    <a data-maze="recursiveDivision" class="dropdown-item">Recursive Division</a>
+                    <a data-maze="recursiveDivisionH" class="dropdown-item">Recursive Division (horizontal)</a>
+                    <a data-maze="recursiveDivisionV" class="dropdown-item">Recursive Division (vertical)</a>
+                    <a data-maze="randomWalls" class="dropdown-item">Random Walls</a>
+                    <a data-maze="staircase" class="dropdown-item">Staircase Pattern</a>
+                </div>
+            </div>
+
+            <button class="nav-btn" id="btn-add-weight" title="Toggle weight mode">
+                <i class="fa fa-weight-hanging"></i> Add Weight
+            </button>
+
+            <button class="nav-btn primary" id="btn-visualize">
+                Visualize!
+            </button>
+
+            <button class="nav-btn" id="btn-clear-board">Clear Board</button>
+            <button class="nav-btn" id="btn-clear-walls">Clear Walls</button>
+            <button class="nav-btn" id="btn-clear-path">Clear Path</button>
+
+            <div class="slider-container">
+                <label for="speed">Speed</label>
+                <select id="speed" class="speed-select">
+                    <option value="fast" selected>Fast</option>
+                    <option value="average">Average</option>
+                    <option value="slow">Slow</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <div class="info-bar" id="info-bar">
+        <span id="algo-description">Pick an algorithm and visualize it!</span>
+    </div>
+
+    <div class="legend-bar">
+        <span class="legend-item">
+            <span class="legend-icon start-icon"><i class="fa fa-arrow-right"></i></span> Start Node
+        </span>
+        <span class="legend-item">
+            <span class="legend-icon finish-icon"><i class="fa fa-bullseye"></i></span> Target Node
+        </span>
+        <span class="legend-item">
+            <span class="legend-icon weight-icon"><i class="fa fa-weight-hanging"></i></span> Weight Node
+        </span>
+        <span class="legend-item">
+            <span class="legend-swatch unvisited"></span> Unvisited
+        </span>
+        <span class="legend-item">
+            <span class="legend-swatch visited-anim"></span> Visited
+        </span>
+        <span class="legend-item">
+            <span class="legend-swatch shortest-anim"></span> Shortest Path
+        </span>
+        <span class="legend-item">
+            <span class="legend-swatch wall-swatch"></span> Wall
+        </span>
+    </div>
+
+    <main class="grid-wrapper">
+        <table class="grid" id="grid"></table>
+    </main>
+
+    <script src="js/node.js"></script>
+    <script src="js/pathfinding.js"></script>
+    <script src="js/mazes.js"></script>
+    <script src="js/visualizer.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
